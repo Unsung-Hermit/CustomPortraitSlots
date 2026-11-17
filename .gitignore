@@ -1,0 +1,36 @@
+# Allowlist: ignore everything, then re-include only what belongs in this public repo.
+# Parent directories must be un-ignored before their files can be tracked.
+
+*
+!*/
+
+# --- Root entrypoints / docs ---
+!.gitignore
+!README.md
+!Guide.html
+!generate_slot.bat
+!merge_slots.bat
+
+# --- Tools (sources, frozen exes, licenses, cooked templates) ---
+!Tools/
+!Tools/**
+
+# --- MergeInbox: keep instructions only (never user packs) ---
+!MergeInbox/
+!MergeInbox/README.md
+
+# --- Hard deny (even under allowed trees) ---
+out/
+**/__pycache__/
+**/*.py[cod]
+**/*.pyo
+**/.DS_Store
+**/Thumbs.db
+*.zip
+*.pak
+.env
+.env.*
+*.log
+MergeInbox/**
+!MergeInbox/README.md
+Tools/templates/**/_*
