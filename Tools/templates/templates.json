@@ -1,0 +1,117 @@
+{
+  "layout": {
+    "name": "CPS_DXT5_512",
+    "width": 512,
+    "height": 512,
+    "pixelFormat": "PF_DXT5",
+    "uexpSize": 262427,
+    "uexpMagic": "08000000",
+    "dxtOffset": 255,
+    "dxtSize": 262144,
+    "mipFooterSize": 24,
+    "bulkHeaderOffset": 235,
+    "bulkOffsetFormula": "len(uasset) + dxtOffset"
+  },
+  "sourcePackage": "Mod Editor template mod CPSTemplate (Editor 1.15.73 / game 1.15.399 cook)",
+  "sets": {
+    "Female": {
+      "texture": "CPST_Tex",
+      "portrait": "CPST_Portrait_Female",
+      "persona": "CPST_Persona_Female",
+      "personaSexTag": "Persona.Sex.Female",
+      "dir": "Female",
+      "files": {
+        "CPST_Persona_Female.uasset": {
+          "bytes": 1233,
+          "sha256": "d66ec27669adb49fca964178f13c719df07db5d8cc524068012b694b4d281c19"
+        },
+        "CPST_Persona_Female.uexp": {
+          "bytes": 669,
+          "sha256": "ccbeeaaf39b3985562c99ea2a9c69df90ed88d08bedf4230f3ff2141f44d29a2"
+        },
+        "CPST_Portrait_Female.uasset": {
+          "bytes": 997,
+          "sha256": "4b9ea4ebceef5517b1671ced47b4dcfd1cd60cddb50124a7d0229bcc8b02013b"
+        },
+        "CPST_Portrait_Female.uexp": {
+          "bytes": 114,
+          "sha256": "e3527795cacc121a8e03ac30ad6b1b73c14826c632a3c71f0df101e0f4674895"
+        },
+        "CPST_Tex.uasset": {
+          "bytes": 796,
+          "sha256": "14a5e4b2fe8776e14780795edcc8b69c5d7e262d3cee031a7884f398cd7c888c"
+        },
+        "CPST_Tex.uexp": {
+          "bytes": 262427,
+          "sha256": "4d72cab5e8c1a75b2781576997d8823cdc831cd263a58ed0e2d0bb7de992be27"
+        }
+      }
+    },
+    "Male": {
+      "texture": "CPST_Tex",
+      "portrait": "CPST_Portrait_Male",
+      "persona": "CPST_Persona_Male",
+      "personaSexTag": "Persona.Sex.Male",
+      "dir": "Male",
+      "files": {
+        "CPST_Persona_Male.uasset": {
+          "bytes": 1225,
+          "sha256": "0de177791e798edd96ce8ed85e59840f887a88e1d65900e8f6b585c38fa60975"
+        },
+        "CPST_Persona_Male.uexp": {
+          "bytes": 665,
+          "sha256": "b1262b3ef9158dccb47a676add246876245658af8f678b42363ce614c9e1643c"
+        },
+        "CPST_Portrait_Male.uasset": {
+          "bytes": 993,
+          "sha256": "37ae3c1524c907f6f8ab139a0efe20b4fc56b13c70003f57c0735600002737f7"
+        },
+        "CPST_Portrait_Male.uexp": {
+          "bytes": 114,
+          "sha256": "e3527795cacc121a8e03ac30ad6b1b73c14826c632a3c71f0df101e0f4674895"
+        },
+        "CPST_Tex.uasset": {
+          "bytes": 796,
+          "sha256": "14a5e4b2fe8776e14780795edcc8b69c5d7e262d3cee031a7884f398cd7c888c"
+        },
+        "CPST_Tex.uexp": {
+          "bytes": 262427,
+          "sha256": "4d72cab5e8c1a75b2781576997d8823cdc831cd263a58ed0e2d0bb7de992be27"
+        }
+      }
+    },
+    "Nonbinary": {
+      "texture": "CPST_Tex",
+      "portrait": "CPST_Portrait_Nonbinary",
+      "persona": "CPST_Persona_Nonbinary",
+      "personaSexTag": "Persona.Sex.Nonbinary",
+      "dir": "Nonbinary",
+      "files": {
+        "CPST_Persona_Nonbinary.uasset": {
+          "bytes": 1245,
+          "sha256": "5ea4567b15ec1d102a46163585ba88d66f49902db8b7c79e5c002093505c72cf"
+        },
+        "CPST_Persona_Nonbinary.uexp": {
+          "bytes": 676,
+          "sha256": "a5a785aab641fd7b27b94fd43d1fdd9fdac637a437450d0ae0ac9ea7c60743dd"
+        },
+        "CPST_Portrait_Nonbinary.uasset": {
+          "bytes": 1003,
+          "sha256": "1213c693ca72396f39fa261b3434a81389205822fba95cc9bd16dff2a59b108f"
+        },
+        "CPST_Portrait_Nonbinary.uexp": {
+          "bytes": 114,
+          "sha256": "e3527795cacc121a8e03ac30ad6b1b73c14826c632a3c71f0df101e0f4674895"
+        },
+        "CPST_Tex.uasset": {
+          "bytes": 796,
+          "sha256": "14a5e4b2fe8776e14780795edcc8b69c5d7e262d3cee031a7884f398cd7c888c"
+        },
+        "CPST_Tex.uexp": {
+          "bytes": 262427,
+          "sha256": "4d72cab5e8c1a75b2781576997d8823cdc831cd263a58ed0e2d0bb7de992be27"
+        }
+      }
+    }
+  }
+}

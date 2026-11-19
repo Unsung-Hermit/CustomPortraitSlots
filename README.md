@@ -2,7 +2,7 @@
 
 English / [日本語](#日本語)
 
-Toolkit that **adds new pilot portrait slots** for MechWarrior 5: Mercenaries (HBS-style Primary Assets). Companion Optional file for [Custom Player Portrait](https://www.nexusmods.com/mechwarrior5mercenaries/mods/1621).
+Toolkit that **adds new pilot portrait slots** for MechWarrior 5: Mercenaries (MW5 Primary Asset types). Companion Optional file for [Custom Player Portrait](https://www.nexusmods.com/mechwarrior5mercenaries/mods/1621).
 
 This is **not** CustomPortraitKit (vanilla texture replace) and **not** an update to Custom Player Portrait.
 
@@ -31,7 +31,7 @@ This folder is the repository root. Remote / publish settings are maintained by 
 
 ## 日本語
 
-MechWarrior 5: Mercenaries 向けに、**新しいポートレートスロットを追加**するツールキット（HBS型 Primary Asset）。[Custom Player Portrait](https://www.nexusmods.com/mechwarrior5mercenaries/mods/1621) の Optional 姉妹成果物です。
+MechWarrior 5: Mercenaries 向けに、**新しいポートレートスロットを追加**するツールキット（MW5 Primary Asset 型）。[Custom Player Portrait](https://www.nexusmods.com/mechwarrior5mercenaries/mods/1621) の Optional 姉妹成果物です。
 
 **CustomPortraitKit（既存テクスチャ差し替え）ではありません。** Custom Player Portrait 本体の更新でもありません。
 
