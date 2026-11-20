@@ -12,7 +12,7 @@
     "bulkHeaderOffset": 235,
     "bulkOffsetFormula": "len(uasset) + dxtOffset"
   },
-  "sourcePackage": "Mod Editor template mod CPSTemplate (Editor 1.15.73 / game 1.15.399 cook)",
+  "sourcePackage": "Mod Editor per-sex template mods CPSTemplate_Female / CPSTemplate_Male / CPSTemplate_Nonbinary (Editor 1.15.73 / game 1.15.399 cook)",
   "sets": {
     "Female": {
       "texture": "CPST_Tex",
@@ -22,28 +22,32 @@
       "dir": "Female",
       "files": {
         "CPST_Persona_Female.uasset": {
-          "bytes": 1233,
-          "sha256": "d66ec27669adb49fca964178f13c719df07db5d8cc524068012b694b4d281c19"
+          "bytes": 1240,
+          "sha256": "60614e77574b5dcebafad49f2610bcc5fb2da64b1228265f813b68079e62197f"
         },
         "CPST_Persona_Female.uexp": {
-          "bytes": 669,
-          "sha256": "ccbeeaaf39b3985562c99ea2a9c69df90ed88d08bedf4230f3ff2141f44d29a2"
+          "bytes": 683,
+          "sha256": "a4cf6cd92414c10610cf4623a2dcab9ce37a05af7dbb30006f54016d3a90a007"
         },
         "CPST_Portrait_Female.uasset": {
-          "bytes": 997,
-          "sha256": "4b9ea4ebceef5517b1671ced47b4dcfd1cd60cddb50124a7d0229bcc8b02013b"
+          "bytes": 1018,
+          "sha256": "28e7dfa22854bbb021a2adf73d1c3c1d53e031e4e9cb4d62cebbe4ca555f0d2f"
         },
         "CPST_Portrait_Female.uexp": {
           "bytes": 114,
           "sha256": "e3527795cacc121a8e03ac30ad6b1b73c14826c632a3c71f0df101e0f4674895"
         },
         "CPST_Tex.uasset": {
-          "bytes": 796,
-          "sha256": "14a5e4b2fe8776e14780795edcc8b69c5d7e262d3cee031a7884f398cd7c888c"
+          "bytes": 803,
+          "sha256": "bc7e05895b6d020deb16e9b75f956deda9c0234450e48171b7eb36b9641fe55e"
         },
         "CPST_Tex.uexp": {
           "bytes": 262427,
-          "sha256": "4d72cab5e8c1a75b2781576997d8823cdc831cd263a58ed0e2d0bb7de992be27"
+          "sha256": "c216c31c33d72f366a08e7eaaecfb039cddf7225a57fa69c9bcf8dc5a87c01c1"
+        },
+        "AssetRegistry.json": {
+          "bytes": 4320,
+          "sha256": "806c2eba4484630ac89a30dbbbbc64f11233053a308a0c46aae465abf78c19ae"
         }
       }
     },
@@ -55,28 +59,32 @@
       "dir": "Male",
       "files": {
         "CPST_Persona_Male.uasset": {
-          "bytes": 1225,
-          "sha256": "0de177791e798edd96ce8ed85e59840f887a88e1d65900e8f6b585c38fa60975"
+          "bytes": 1230,
+          "sha256": "e3c1ae8a842f1aa429828080b9b86eaa2745f395130f42b38a6dafc7aa88f4d2"
         },
         "CPST_Persona_Male.uexp": {
-          "bytes": 665,
-          "sha256": "b1262b3ef9158dccb47a676add246876245658af8f678b42363ce614c9e1643c"
+          "bytes": 677,
+          "sha256": "4cccbb9e56390317da9b29d287f9c41ab2b08199ab9a8861189f9f58052a0ff6"
         },
         "CPST_Portrait_Male.uasset": {
-          "bytes": 993,
-          "sha256": "37ae3c1524c907f6f8ab139a0efe20b4fc56b13c70003f57c0735600002737f7"
+          "bytes": 1008,
+          "sha256": "d1e11e5232903115dc39dea3f2af914733cf69bf456e20f0bc02772248e74fd3"
         },
         "CPST_Portrait_Male.uexp": {
           "bytes": 114,
           "sha256": "e3527795cacc121a8e03ac30ad6b1b73c14826c632a3c71f0df101e0f4674895"
         },
         "CPST_Tex.uasset": {
-          "bytes": 796,
-          "sha256": "14a5e4b2fe8776e14780795edcc8b69c5d7e262d3cee031a7884f398cd7c888c"
+          "bytes": 801,
+          "sha256": "f2f7be31a0260bd94d295ccd1bd7f26e6ef9be484f11ed0989813d3b86a845b5"
         },
         "CPST_Tex.uexp": {
           "bytes": 262427,
-          "sha256": "4d72cab5e8c1a75b2781576997d8823cdc831cd263a58ed0e2d0bb7de992be27"
+          "sha256": "698d07a7adb5451e80a6e5cc18fa5f3eae22e54774e9350e4165d305f3df56c5"
+        },
+        "AssetRegistry.json": {
+          "bytes": 4250,
+          "sha256": "59be6e67a0836aced7095872987c1d98c65000a6b5cbb40571b73017cefac8ca"
         }
       }
     },
@@ -88,28 +96,32 @@
       "dir": "Nonbinary",
       "files": {
         "CPST_Persona_Nonbinary.uasset": {
-          "bytes": 1245,
-          "sha256": "5ea4567b15ec1d102a46163585ba88d66f49902db8b7c79e5c002093505c72cf"
+          "bytes": 1255,
+          "sha256": "88fc5ecb00127a925c8c3e387b4d3e229cf61000de20d4a512b04412c207ac64"
         },
         "CPST_Persona_Nonbinary.uexp": {
-          "bytes": 676,
-          "sha256": "a5a785aab641fd7b27b94fd43d1fdd9fdac637a437450d0ae0ac9ea7c60743dd"
+          "bytes": 692,
+          "sha256": "cbfd543d5dfc46d71f73ef514b4336d03db28c3de7d6fc66a362c698f6b6db36"
         },
         "CPST_Portrait_Nonbinary.uasset": {
-          "bytes": 1003,
-          "sha256": "1213c693ca72396f39fa261b3434a81389205822fba95cc9bd16dff2a59b108f"
+          "bytes": 1033,
+          "sha256": "93469ebe49d6120602ee625fcf04ce5ccb6b55b214fd54b5e661945175498f9a"
         },
         "CPST_Portrait_Nonbinary.uexp": {
           "bytes": 114,
           "sha256": "e3527795cacc121a8e03ac30ad6b1b73c14826c632a3c71f0df101e0f4674895"
         },
         "CPST_Tex.uasset": {
-          "bytes": 796,
-          "sha256": "14a5e4b2fe8776e14780795edcc8b69c5d7e262d3cee031a7884f398cd7c888c"
+          "bytes": 806,
+          "sha256": "226203cffb08c8d16ed9ea8ae6f1456da23b3eaa862c4c00a63ca410fc58ed75"
         },
         "CPST_Tex.uexp": {
           "bytes": 262427,
-          "sha256": "4d72cab5e8c1a75b2781576997d8823cdc831cd263a58ed0e2d0bb7de992be27"
+          "sha256": "221d6e4b224e03fb0dabb0fa498031a9dcfd63005b44adfd770a40c166027323"
+        },
+        "AssetRegistry.json": {
+          "bytes": 4425,
+          "sha256": "13d663de4798e2c8fa97337532838e5e633800d437212649614d7d42067795e7"
         }
       }
     }
