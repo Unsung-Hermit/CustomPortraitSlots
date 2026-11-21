@@ -372,16 +372,20 @@ def bake() -> None:
         stage = Path(tmp)
         shutil.copytree(PAK_TEMPLATE, stage, dirs_exist_ok=True)
         stage_mw5 = stage / "MW5Mercs"
-        out_dir = stage_mw5 / "Plugins" / plugin / "Content"
+        content_root = stage_mw5 / "Plugins" / plugin / "Content"
+        # Texture stays under contentPath dirs; Portrait/Persona live at Content root
+        # (same layout as CPSTemplate_* Editor pak / AssetRegistry PackageName).
+        tex_dir = content_root
         for part in content_dir_parts:
-            out_dir = out_dir / part
-        out_dir.mkdir(parents=True, exist_ok=True)
-        (out_dir / f"{texture}.uasset").write_bytes(tex_uasset)
-        (out_dir / f"{texture}.uexp").write_bytes(baked_uexp)
-        (out_dir / f"{portrait}.uasset").write_bytes(por_uasset)
-        (out_dir / f"{portrait}.uexp").write_bytes(por_uexp)
-        (out_dir / f"{persona}.uasset").write_bytes(per_uasset)
-        (out_dir / f"{persona}.uexp").write_bytes(per_uexp)
+            tex_dir = tex_dir / part
+        tex_dir.mkdir(parents=True, exist_ok=True)
+        content_root.mkdir(parents=True, exist_ok=True)
+        (tex_dir / f"{texture}.uasset").write_bytes(tex_uasset)
+        (tex_dir / f"{texture}.uexp").write_bytes(baked_uexp)
+        (content_root / f"{portrait}.uasset").write_bytes(por_uasset)
+        (content_root / f"{portrait}.uexp").write_bytes(por_uexp)
+        (content_root / f"{persona}.uasset").write_bytes(per_uasset)
+        (content_root / f"{persona}.uexp").write_bytes(per_uexp)
         pack_pak(stage_mw5, pak_path)
         file_count = verify_pak(stage_mw5, pak_path)
 
