@@ -16,6 +16,7 @@
     .note { background: #fff8e6; border-left: 3px solid #c9a227; padding: 0.6rem 0.85rem; margin: 1rem 0; }
     .ja { margin-top: 2.5rem; padding-top: 1.5rem; border-top: 2px solid #ccc; }
     .muted { color: #555; font-size: 0.95em; }
+    pre .edit { color: #b00000; font-weight: 600; }
   </style>
 </head>
 <body>
@@ -53,6 +54,7 @@
     <li>Length 1–32. Must start with a letter.</li>
     <li>Case-insensitive uniqueness (collision checks ignore case).</li>
     <li>Reserved: bare <code>CPS</code> / <code>CPSPack</code>; Ids starting with <code>CPST_</code>; Windows names like <code>CON</code>, <code>PRN</code>.</li>
+    <li><strong>Do not end with a UE FName number suffix</strong> (<code>_0</code>, <code>_1</code>, <code>_10</code>, …). Those Ids never show in POE/RollCall. Zero-padded forms like <code>_01</code>…<code>_09</code> are allowed; safer: <code>MyAce01</code>, <code>Slot_10a</code>, or <code>Slot10</code>.</li>
     <li>Recommended (not required): <code>&lt;AuthorShort&gt;_&lt;SlotName&gt;</code> — e.g. <code>Ashenwright_MyAce01</code>.</li>
   </ul>
   <p>Invalid Ids make generate / merge fail (nothing is silently “fixed”).</p>
@@ -92,6 +94,68 @@
     <li>The image is center-cropped to 512×512 DXT5. Non-square images lose edges. Transparent PNGs keep alpha.</li>
   </ol>
   <p>No pak exists until bake succeeds. Restart the game after the mod is in Mods.</p>
+
+  <h2>Tip: many slots at once (PowerShell)</h2>
+  <p>When your Id pattern is already fixed and the portrait files are ready, you can generate and bake in bulk from the same PowerShell window (toolkit root). Merge stays the usual <code>MergeInbox</code> + double-click.</p>
+  <p>Example: prefix <code>Ashenwright_Female_</code>, Sex Female, Ids <code>…_0001</code> … <code>…_0022</code> (leading zeros avoid the FName <code>_10</code> trap above).</p>
+  <div class="note">
+    <strong>Paste:</strong> Copy each whole block including <code>&amp; {</code> … <code>}</code>. A bare <code>{ … }</code> does nothing; without the wrap, older consoles often run only the first line.<br>
+    <strong>Red text:</strong> Change those parts to your own prefix, count/padding, <code>-Sex</code>, and folder filter before running.
+  </div>
+  <ol>
+    <li>Batch-generate empty slots:</li>
+  </ol>
+  <pre>&amp; {
+<span class="edit">1..22</span> | ForEach-Object {
+  $id = "<span class="edit">Ashenwright_Female_</span>{0:<span class="edit">D4</span>}" -f $_
+  .\generate_slot.bat $id -Sex <span class="edit">Female</span>
+}
+}</pre>
+  <ol start="2">
+    <li>Copy one image into each <code>out\CPS_{Id}\Resources\</code> (any filename; leave <code>Icon128.png</code> alone). The Id is the folder name.</li>
+    <li>Rename those images to <code>portrait</code> + original extension (<code>.png</code> / <code>.jpg</code> / <code>.jpeg</code>). Skip folders with 0 images; warn and skip if 2+ images (besides <code>Icon128.png</code>):</li>
+  </ol>
+  <pre>&amp; {
+Get-ChildItem .\out\<span class="edit">CPS_Ashenwright_Female_*</span> -Directory | ForEach-Object {
+  $res = Join-Path $_.FullName "Resources"
+  if (-not (Test-Path -LiteralPath $res)) { return }
+  $imgs = @(Get-ChildItem -LiteralPath $res -File | Where-Object {
+    $_.Name -ne "Icon128.png" -and $_.Extension -match '^\.(png|jpg|jpeg)$'
+  })
+  if ($imgs.Count -eq 0) { return }
+  if ($imgs.Count -gt 1) {
+    Write-Warning "Skip $($_.Name): $($imgs.Count) images (need exactly 1)"
+    return
+  }
+  $src = $imgs[0]
+  $destName = "portrait" + $src.Extension.ToLowerInvariant()
+  if ($src.Name -eq $destName) { return }
+  $dest = Join-Path $res $destName
+  if (Test-Path -LiteralPath $dest) {
+    Write-Warning "Skip $($_.Name): $destName already exists"
+    return
+  }
+  Rename-Item -LiteralPath $src.FullName -NewName $destName
+}
+}</pre>
+  <ol start="4">
+    <li>Batch-bake every folder that already has a portrait:</li>
+  </ol>
+  <pre>&amp; {
+Get-ChildItem .\out\<span class="edit">CPS_Ashenwright_Female_*</span> -Directory | ForEach-Object {
+  Push-Location $_.FullName
+  if (Test-Path .\Tools\bake_portrait.exe) {
+    .\Tools\bake_portrait.exe
+  } elseif (Test-Path .\Tools\bake_portrait.py) {
+    python .\Tools\bake_portrait.py
+  }
+  $code = $LASTEXITCODE
+  Pop-Location
+  if ($code -ne 0) { throw "Bake failed: $($_.Name)" }
+}
+}</pre>
+  <p class="muted">Call the baker directly (not <code>bake_portrait.bat</code>) so the loop does not stop on “Press any key”. On failure the loop stops; fix that slot and re-run (successful paks remain; re-bake overwrites).</p>
+  <p>Then copy the baked <code>CPS_*</code> folders into <code>MergeInbox\{PackName}\</code> and run <code>merge_slots.bat</code> as usual.</p>
 
   <h2>MergeInbox layout</h2>
   <pre>MergeInbox/
@@ -142,6 +206,7 @@
       <li>使える文字: 英数字と <code>_</code> のみ。ハイフン <code>-</code> は不可。</li>
       <li>長さ 1–32。先頭は英字。大小文字を区別せず一意。</li>
       <li>禁止: <code>CPS</code> / <code>CPSPack</code> 単体、<code>CPST_</code> で始まる ID、Windows 予約名（<code>CON</code> など）。</li>
+      <li><strong>末尾を UE の FName 数値サフィックスにしない</strong>（<code>_0</code> / <code>_1</code> / <code>_10</code> など）。これらは POE / RollCall に出ません。ゼロ埋めの <code>_01</code>…<code>_09</code> は可。より安全な例: <code>MyAce01</code>、<code>Slot_10a</code>、<code>Slot10</code>。</li>
       <li>推奨（強制しない）: <code>作者略称_スロット名</code>（例: <code>Ashenwright_MyAce01</code>）。</li>
     </ul>
     <p>規則違反の ID は generate / merge がエラー終了します（勝手に直して続行しません）。</p>
@@ -179,6 +244,68 @@
       <li>画像は中央クロップで 512×512 の DXT5 になる。非正方形は端が切れる。PNG の透過は維持される。</li>
     </ol>
     <p>bake が成功するまで pak はできません。Mods に入れたあとゲームを再起動してください。</p>
+
+    <h2>Tips: まとめて作る・焼く（PowerShell）</h2>
+    <p>命名規則が決まっていて、ポートレート画像も揃っているときは、同じ PowerShell 窓（ツールキットルート）から一括 generate / bake できます。merge は従来どおり <code>MergeInbox</code> ＋ダブルクリックです。</p>
+    <p>例: 接頭辞 <code>Ashenwright_Female_</code>、Sex Female、Id は <code>…_0001</code>〜<code>…_0022</code>（先頭ゼロで、上の FName <code>_10</code> 問題を避ける）。</p>
+    <div class="note">
+      <strong>貼り付け:</strong> 各ブロックは先頭の <code>&amp; {</code> から閉じの <code>}</code> までまとめてコピーしてください。<code>{ … }</code> だけだと実行されません。囲みなしだと古いコンソールでは1行目だけ動くことがあります。<br>
+      <strong>赤字:</strong> 自分の接頭辞・件数／桁・<code>-Sex</code>・フォルダ用フィルタに書き換えてから実行してください。
+    </div>
+    <ol>
+      <li>空スロットを一括生成:</li>
+    </ol>
+    <pre>&amp; {
+<span class="edit">1..22</span> | ForEach-Object {
+  $id = "<span class="edit">Ashenwright_Female_</span>{0:<span class="edit">D4</span>}" -f $_
+  .\generate_slot.bat $id -Sex <span class="edit">Female</span>
+}
+}</pre>
+    <ol start="2">
+      <li>各 <code>out\CPS_{Id}\Resources\</code> に画像を1枚ずつ入れる（ファイル名は任意。<code>Icon128.png</code> はそのまま）。Id はフォルダ名側です。</li>
+      <li>画像を <code>portrait</code>＋元の拡張子（<code>.png</code> / <code>.jpg</code> / <code>.jpeg</code>）へリネーム。0枚は何もしない。2枚以上（<code>Icon128.png</code> 以外）は警告してスキップ:</li>
+    </ol>
+    <pre>&amp; {
+Get-ChildItem .\out\<span class="edit">CPS_Ashenwright_Female_*</span> -Directory | ForEach-Object {
+  $res = Join-Path $_.FullName "Resources"
+  if (-not (Test-Path -LiteralPath $res)) { return }
+  $imgs = @(Get-ChildItem -LiteralPath $res -File | Where-Object {
+    $_.Name -ne "Icon128.png" -and $_.Extension -match '^\.(png|jpg|jpeg)$'
+  })
+  if ($imgs.Count -eq 0) { return }
+  if ($imgs.Count -gt 1) {
+    Write-Warning "Skip $($_.Name): $($imgs.Count) images (need exactly 1)"
+    return
+  }
+  $src = $imgs[0]
+  $destName = "portrait" + $src.Extension.ToLowerInvariant()
+  if ($src.Name -eq $destName) { return }
+  $dest = Join-Path $res $destName
+  if (Test-Path -LiteralPath $dest) {
+    Write-Warning "Skip $($_.Name): $destName already exists"
+    return
+  }
+  Rename-Item -LiteralPath $src.FullName -NewName $destName
+}
+}</pre>
+    <ol start="4">
+      <li>portrait が入っているフォルダを一括 bake:</li>
+    </ol>
+    <pre>&amp; {
+Get-ChildItem .\out\<span class="edit">CPS_Ashenwright_Female_*</span> -Directory | ForEach-Object {
+  Push-Location $_.FullName
+  if (Test-Path .\Tools\bake_portrait.exe) {
+    .\Tools\bake_portrait.exe
+  } elseif (Test-Path .\Tools\bake_portrait.py) {
+    python .\Tools\bake_portrait.py
+  }
+  $code = $LASTEXITCODE
+  Pop-Location
+  if ($code -ne 0) { throw "Bake failed: $($_.Name)" }
+}
+}</pre>
+    <p class="muted"><code>bake_portrait.bat</code> ではなく exe / py を直接呼ぶので、「Press any key」でループが止まりません。失敗したスロットで中断するので、直してから再実行してください（成功済み pak はそのまま、再 bake は上書き）。</p>
+    <p>その後、bake 済みの <code>CPS_*</code> を <code>MergeInbox\{PackName}\</code> に入れて、いつもどおり <code>merge_slots.bat</code> を実行します。</p>
 
     <h2>MergeInbox</h2>
     <pre>MergeInbox/

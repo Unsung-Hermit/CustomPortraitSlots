@@ -39,6 +39,12 @@ LAYOUT_NAME = "CPS_DXT5_512"
 CONTENT_TEX_DIR = "UI/Textures/Pilots"
 
 ID_RE = re.compile(r"^[A-Za-z][A-Za-z0-9_]{0,31}$")
+# UE FName ParseNumberFromName: trailing _0 or _<no-leading-zero integer> is split
+# into base+Number. Our cooked name tables store the full string with Number=0, so
+# PrimaryAsset / SoftObject lookups that re-parse the string fail to match.
+# _01.._09 (leading zero, width>=2) are NOT split by UE and remain allowed.
+# Runtime proof 2026-11-23: Probe_Slot_01 shows, Probe_Slot_10 does not (same bake).
+FNAME_NUMBER_SUFFIX_RE = re.compile(r"_(0|[1-9][0-9]*)$")
 RESERVED_IDS = {"cps", "cpspack"}
 WINDOWS_RESERVED = {
     "con",
@@ -96,6 +102,13 @@ def validate_id(slot_id: str) -> None:
         raise ValueError(
             f"Invalid Id {slot_id!r}: must be 1-32 chars, start with A-Z/a-z, "
             "and contain only A-Za-z0-9_ (no hyphens)."
+        )
+    if FNAME_NUMBER_SUFFIX_RE.search(slot_id):
+        raise ValueError(
+            f"Invalid Id {slot_id!r}: ends with a UE FName numeric suffix "
+            "(_0, _1, _10, …). Those Ids do not appear in POE/RollCall. "
+            "Use a leading zero (_01), a letter after the digits (_10a), "
+            "or no underscore before the number (Slot10)."
         )
     lower = slot_id.lower()
     if lower in RESERVED_IDS:

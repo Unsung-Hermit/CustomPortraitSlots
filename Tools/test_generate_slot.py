@@ -36,6 +36,20 @@ class IdValidationTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             gen.validate_id("CPST_Test")
 
+    def test_rejects_fname_number_suffix_10(self) -> None:
+        with self.assertRaises(ValueError):
+            gen.validate_id("Probe_Slot_10")
+
+    def test_rejects_fname_number_suffix_0(self) -> None:
+        with self.assertRaises(ValueError):
+            gen.validate_id("Probe_Slot_0")
+
+    def test_accepts_leading_zero_suffix_01(self) -> None:
+        gen.validate_id("Probe_Slot_01")
+
+    def test_accepts_letter_after_digits(self) -> None:
+        gen.validate_id("Probe_Slot_10a")
+
 
 class RenameRoundTripTests(unittest.TestCase):
     def test_female_texture_total_header_and_bulk(self) -> None:
