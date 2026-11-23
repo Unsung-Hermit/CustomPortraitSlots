@@ -4,24 +4,196 @@
   <meta charset="utf-8">
   <title>CustomPortraitSlots — Guide</title>
   <style>
-    body { font-family: system-ui, sans-serif; max-width: 52rem; margin: 2rem auto; padding: 0 1rem; line-height: 1.45; }
-    code, pre { font-family: ui-monospace, Consolas, monospace; }
-    pre { background: #f4f4f4; padding: 0.75rem 1rem; overflow-x: auto; }
-    h1 { font-size: 1.4rem; }
+    body { font-family: system-ui, sans-serif; max-width: 52rem; margin: 2rem auto; padding: 0 1rem; line-height: 1.45; color: #1a1a1a; }
+    code, pre { font-family: ui-monospace, Consolas, monospace; font-size: 0.92em; }
+    pre { background: #f4f4f4; padding: 0.75rem 1rem; overflow-x: auto; border-radius: 2px; }
+    h1 { font-size: 1.45rem; margin-bottom: 0.4rem; }
+    h2 { font-size: 1.15rem; margin-top: 1.75rem; border-bottom: 1px solid #ddd; padding-bottom: 0.25rem; }
+    table { border-collapse: collapse; width: 100%; margin: 0.75rem 0; font-size: 0.95em; }
+    th, td { border: 1px solid #ccc; padding: 0.4rem 0.55rem; text-align: left; vertical-align: top; }
+    th { background: #f0f0f0; }
+    ul, ol { padding-left: 1.35rem; }
+    .note { background: #fff8e6; border-left: 3px solid #c9a227; padding: 0.6rem 0.85rem; margin: 1rem 0; }
+    .ja { margin-top: 2.5rem; padding-top: 1.5rem; border-top: 2px solid #ccc; }
+    .muted { color: #555; font-size: 0.95em; }
   </style>
 </head>
 <body>
   <h1>CustomPortraitSlots — Guide</h1>
-  <p>Placeholder. Copy-paste generate commands (by Sex) and MergeInbox layout will go here.</p>
-  <h2>Generate (planned)</h2>
-  <pre>.\generate_slot.bat MyAce01 -Sex Female
-.\generate_slot.bat MyAce01 -Sex Male
-.\generate_slot.bat MyAce01 -Sex Nonbinary</pre>
-  <h2>Merge (planned)</h2>
-  <pre>MergeInbox\
-  MyPortraitPack\
-    CPS_MyAce01\
-    CPS_MyAce02\</pre>
-  <p>Then double-click <code>merge_slots.bat</code> (no arguments).</p>
+  <p class="muted">Adds new pilot portrait slots for MechWarrior 5: Mercenaries. Offline page — open this file in a browser. You do not need Python.</p>
+
+  <h2>What you need</h2>
+  <ul>
+    <li>Windows</li>
+    <li>In-game: <strong>RollCall</strong> or <strong>Pilot Overhaul Eternal</strong> (do not assume both together)</li>
+  </ul>
+
+  <h2>How to run commands</h2>
+  <p><code>generate_slot.bat</code> needs an Id and Sex, so you run it once from a small PowerShell window. Afterwards, baking and merging are double-clicks.</p>
+  <ol>
+    <li>In File Explorer, open the folder that contains this <code>Guide.html</code> (the toolkit root).</li>
+    <li>Click the address bar, type <code>powershell</code>, press Enter. A blue or black window opens in that folder.</li>
+    <li>Copy one of the example lines below, paste into the window, press Enter.</li>
+    <li>When it finishes, close the window. Your new folder is under <code>out\</code>.</li>
+  </ol>
+  <p class="muted">Tip: In PowerShell the leading <code>.\</code> is required. Command Prompt (cmd) can use the same line.</p>
+
+  <h2>Workflow</h2>
+  <ol>
+    <li>Generate one slot (PowerShell, step above).</li>
+    <li>Open <code>out\CPS_{Id}\Resources\</code>, put your image as <code>portrait.png</code> (or <code>.jpg</code> / <code>.jpeg</code>).</li>
+    <li>Double-click <code>bake_portrait.bat</code> in that same <code>out\CPS_{Id}\</code> folder.</li>
+    <li>Copy that folder into the game’s <code>MW5Mercs\Mods</code>, enable it in the mod list, restart the game.<br>
+        Or gather several baked folders under <code>MergeInbox</code> (below) and double-click <code>merge_slots.bat</code> at the toolkit root first.</li>
+  </ol>
+
+  <h2>Id rules</h2>
+  <ul>
+    <li>Characters: letters, digits, underscore <code>_</code> only. No hyphen <code>-</code>.</li>
+    <li>Length 1–32. Must start with a letter.</li>
+    <li>Case-insensitive uniqueness (collision checks ignore case).</li>
+    <li>Reserved: bare <code>CPS</code> / <code>CPSPack</code>; Ids starting with <code>CPST_</code>; Windows names like <code>CON</code>, <code>PRN</code>.</li>
+    <li>Recommended (not required): <code>&lt;AuthorShort&gt;_&lt;SlotName&gt;</code> — e.g. <code>Ashenwright_MyAce01</code>.</li>
+  </ul>
+  <p>Invalid Ids make generate / merge fail (nothing is silently “fixed”).</p>
+
+  <h2>Generate commands (by Sex)</h2>
+  <p>Copy-paste shape (no full paths in the command):</p>
+  <pre>.\generate_slot.bat {Id} -Sex {Sex}</pre>
+  <pre>.\generate_slot.bat My_Ace_01 -Sex Female
+.\generate_slot.bat My_Ace_01 -Sex Male
+.\generate_slot.bat My_Ace_01 -Sex Nonbinary</pre>
+  <ul>
+    <li>Output folder: <code>out\CPS_{Id}\</code></li>
+    <li>If you omit <code>-Sex</code>, Sex becomes <strong>Nonbinary</strong> and a warning is printed.</li>
+    <li>If that output folder already exists, generation stops with an error. Add <code>-Force</code> to overwrite.</li>
+  </ul>
+
+  <h2>What one slot contains</h2>
+  <table>
+    <thead><tr><th>Asset</th><th>Name</th></tr></thead>
+    <tbody>
+      <tr><td>Texture2D</td><td><code>{Id}</code></td></tr>
+      <tr><td>MWPortraitAsset</td><td><code>PO_{Id}</code></td></tr>
+      <tr><td>MWPersonaAsset</td><td><code>{Id}_Template</code></td></tr>
+      <tr><td>Plugin folder</td><td><code>CPS_{Id}</code></td></tr>
+    </tbody>
+  </table>
+  <p>Portrait tag: <code>Portrait.CPS</code> only.</p>
+  <p>Persona tags always include <code>Persona.Role.Pilot</code>, <code>Persona.Use.Template</code>, <code>Persona.Use.Employable</code> (needed for POE), and <code>Persona.Sex.Female</code> / <code>Male</code> / <code>Nonbinary</code> matching <code>-Sex</code>.</p>
+  <div class="note">
+    <strong>Random pilots:</strong> Because slots use <code>Persona.Use.Employable</code>, the game may also use them as appearance candidates for randomly generated pilots. That is expected. The cooked Persona stores Name / Callsign as <code>{Id}</code>, but random pilots usually get a new name, callsign, bio, and traits from the game, so those template strings typically do not appear on screen.
+  </div>
+
+  <h2>Bake</h2>
+  <ol>
+    <li>In <code>out\CPS_{Id}\Resources\</code>, place <code>portrait.png</code>, <code>portrait.jpg</code>, or <code>portrait.jpeg</code> (<code>.png</code> wins if several exist).</li>
+    <li>Double-click <code>bake_portrait.bat</code> next to that mod’s <code>mod.json</code>.</li>
+    <li>The image is center-cropped to 512×512 DXT5. Non-square images lose edges. Transparent PNGs keep alpha.</li>
+  </ol>
+  <p>No pak exists until bake succeeds. Restart the game after the mod is in Mods.</p>
+
+  <h2>MergeInbox layout</h2>
+  <pre>MergeInbox/
+  MyPortraitPack/          ← pack name = out folder / pak name / display name
+    CPS_MyAce01/           ← baked individual slot folders only
+    CPS_MyAce02/
+  AnotherPack/             ← one double-click can process several packs
+    CPS_Other01/</pre>
+  <ul>
+    <li>Double-click <code>merge_slots.bat</code> at the toolkit root (no arguments). A window opens, then pauses so you can read the result.</li>
+    <li>Only baked slots (with <code>Paks\CPS_{Id}.pak</code>) are merged; unbaked ones are skipped and listed.</li>
+    <li>Each slot keeps <code>Plugins\CPS_{Id}\</code> inside the pack (paths are not rewritten).</li>
+    <li>Successful packs include <code>PackCatalog.html</code> (thumbnails + Id / Sex / tags + the copy-paste generate command).</li>
+    <li>When using a pack, disable the individual slot mods.</li>
+  </ul>
+
+  <div class="ja">
+    <h1>CustomPortraitSlots — ガイド（日本語）</h1>
+    <p class="muted">MechWarrior 5: Mercenaries 向けに、新しいパイロット用ポートレートスロットを追加するツールキットです。このファイルをブラウザで開いて使います。Python は不要です。</p>
+
+    <h2>必要なもの</h2>
+    <ul>
+      <li>Windows</li>
+      <li>ゲーム側: <strong>RollCall</strong> または <strong>Pilot Overhaul Eternal</strong>（併用は前提にしない）</li>
+    </ul>
+
+    <h2>コマンドの動かし方</h2>
+    <p><code>generate_slot.bat</code> だけは Id と Sex が必要なので、一度だけ小さな PowerShell 窓から実行します。そのあとの bake / merge はダブルクリックで足ります。</p>
+    <ol>
+      <li>エクスプローラーで、この <code>Guide.html</code> があるフォルダ（ツールキットのルート）を開く。</li>
+      <li>アドレスバーをクリックし、<code>powershell</code> と打って Enter。そのフォルダで青い／黒い窓が開く。</li>
+      <li>下の例の1行をコピーして窓に貼り付け、Enter。</li>
+      <li>終わったら窓を閉じてよい。新しいフォルダは <code>out\</code> の下にある。</li>
+    </ol>
+    <p class="muted">補足: PowerShell では先頭の <code>.\</code> が必要です。コマンドプロンプト（cmd）でも同じ行で動きます。</p>
+
+    <h2>流れ</h2>
+    <ol>
+      <li>上の手順で1スロットを生成する。</li>
+      <li><code>out\CPS_{Id}\Resources\</code> に画像を <code>portrait.png</code>（または jpg/jpeg）として置く。</li>
+      <li>同じ <code>out\CPS_{Id}\</code> 内の <code>bake_portrait.bat</code> をダブルクリックする。</li>
+      <li>そのフォルダをゲームの <code>MW5Mercs\Mods</code> に入れ、mod 一覧で有効化し、再起動する。<br>
+          まとめる場合は、先に bake 済みフォルダを <code>MergeInbox</code>（下記）へ入れ、ツールキットルートの <code>merge_slots.bat</code> をダブルクリックする。</li>
+    </ol>
+
+    <h2>ID 規則</h2>
+    <ul>
+      <li>使える文字: 英数字と <code>_</code> のみ。ハイフン <code>-</code> は不可。</li>
+      <li>長さ 1–32。先頭は英字。大小文字を区別せず一意。</li>
+      <li>禁止: <code>CPS</code> / <code>CPSPack</code> 単体、<code>CPST_</code> で始まる ID、Windows 予約名（<code>CON</code> など）。</li>
+      <li>推奨（強制しない）: <code>作者略称_スロット名</code>（例: <code>Ashenwright_MyAce01</code>）。</li>
+    </ul>
+    <p>規則違反の ID は generate / merge がエラー終了します（勝手に直して続行しません）。</p>
+
+    <h2>生成コマンド（Sex 別）</h2>
+    <pre>.\generate_slot.bat {Id} -Sex {Sex}</pre>
+    <pre>.\generate_slot.bat My_Ace_01 -Sex Female
+.\generate_slot.bat My_Ace_01 -Sex Male
+.\generate_slot.bat My_Ace_01 -Sex Nonbinary</pre>
+    <ul>
+      <li>出力: <code>out\CPS_{Id}\</code></li>
+      <li><code>-Sex</code> 省略時は Nonbinary（警告あり）。</li>
+      <li>同名の出力フォルダがあるとエラー。<code>-Force</code> で上書き。</li>
+    </ul>
+
+    <h2>1スロットの中身</h2>
+    <table>
+      <thead><tr><th>アセット</th><th>名前</th></tr></thead>
+      <tbody>
+        <tr><td>Texture2D</td><td><code>{Id}</code></td></tr>
+        <tr><td>MWPortraitAsset</td><td><code>PO_{Id}</code></td></tr>
+        <tr><td>MWPersonaAsset</td><td><code>{Id}_Template</code></td></tr>
+        <tr><td>プラグインフォルダ</td><td><code>CPS_{Id}</code></td></tr>
+      </tbody>
+    </table>
+    <p>Portrait タグは <code>Portrait.CPS</code> のみ。Persona は <code>Pilot</code> / <code>Template</code> / <code>Employable</code>（POE に必要）と <code>Persona.Sex.*</code>（<code>-Sex</code> に対応）。</p>
+    <div class="note">
+      <strong>ランダムパイロット:</strong> <code>Persona.Use.Employable</code> を付けるため、スロットはランダム生成パイロットの見た目候補にもなり得ます。仕様です。cooked Persona には Name / Callsign として <code>{Id}</code> を書き込みますが、ランダム生成ではゲーム側が名前・コールサイン・バイオ・特性を振り直すため、テンプレの文字列は画面上ほぼ出ません。
+    </div>
+
+    <h2>Bake</h2>
+    <ol>
+      <li><code>out\CPS_{Id}\Resources\</code> に <code>portrait.png</code> / <code>.jpg</code> / <code>.jpeg</code> を置く（複数あるときは png 優先）。</li>
+      <li>その mod の <code>mod.json</code> の隣にある <code>bake_portrait.bat</code> をダブルクリック。</li>
+      <li>画像は中央クロップで 512×512 の DXT5 になる。非正方形は端が切れる。PNG の透過は維持される。</li>
+    </ol>
+    <p>bake が成功するまで pak はできません。Mods に入れたあとゲームを再起動してください。</p>
+
+    <h2>MergeInbox</h2>
+    <pre>MergeInbox/
+  MyPortraitPack/          ← パック名 = 出力フォルダ名 / pak 名 / 表示名
+    CPS_MyAce01/           ← bake 済みの個別スロットだけ
+    CPS_MyAce02/
+  AnotherPack/             ← 同じダブルクリックで複数パックも可
+    CPS_Other01/</pre>
+    <ul>
+      <li>ツールキットルートの <code>merge_slots.bat</code> をダブルクリック（引数なし）。結果を読めるよう窓が止まります。</li>
+      <li>bake 済み（<code>Paks\CPS_{Id}.pak</code> がある）だけ結合。未 bake はスキップして一覧表示。</li>
+      <li>各スロットの <code>Plugins\CPS_{Id}\</code> はそのままパック内に残る（パスは書き換えない）。</li>
+      <li>成功したパックには <code>PackCatalog.html</code>（サムネ + Id / Sex / タグ + コピペ用生成コマンド）が付く。</li>
+      <li>パックを使うときは個別スロット mod を無効化する。</li>
+    </ul>
+  </div>
 </body>
 </html>

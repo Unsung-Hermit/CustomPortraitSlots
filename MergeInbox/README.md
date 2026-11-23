@@ -11,4 +11,4 @@ MergeInbox/
 
 Only baked individual slot mods (`CPS_*`) belong inside a pack folder. Then double-click `merge_slots.bat` at the toolkit root (no arguments).
 
-Do not commit user packs; this README is the only tracked file under MergeInbox.
+Full instructions: open `Guide.html` in the toolkit root.

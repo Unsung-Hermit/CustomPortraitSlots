@@ -21,6 +21,7 @@
 
 # --- Hard deny (even under allowed trees) ---
 out/
+dist/
 **/__pycache__/
 **/*.py[cod]
 **/*.pyo
@@ -34,3 +35,4 @@ out/
 MergeInbox/**
 !MergeInbox/README.md
 Tools/templates/**/_*
+Tools/_pyi_build/

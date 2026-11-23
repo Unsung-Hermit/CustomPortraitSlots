@@ -1,12 +1,16 @@
-# Tools
+# Tools (maintainer)
 
-Scripts, frozen exes, `repak`, licenses, and cooked templates live here.
+Scripts, frozen exes, `repak`, licenses, and cooked templates.
 
-Templates go under `templates/` (Male / Female / Nonbinary sets). Each set holds the texture `CPST_Tex` and a Portrait + Persona pair, cooked from the Mod Editor template mod `CPSTemplate_<Sex>`.
+Templates go under `templates/` (Male / Female / Nonbinary). Each set holds `CPST_Tex` plus a Portrait + Persona pair from Mod Editor mod `CPSTemplate_<Sex>`.
 
-- `generate_slot.py` — rename templates to `CPS_<Id>`, rewrite Tags / AssetRegistry / `target.json`, write `out/CPS_<Id>/`
-- `bake_portrait.py` — bake `Resources/portrait.*` into the generated slot pak
-- `merge_slots.py` — MergeInbox pack merge (double-click `merge_slots.bat`, no args). Skips unbaked slots, detects Id collisions, keeps each `CPS_<Id>` registry side-by-side, writes `PackCatalog.html`
-- `registry_writer.py` — AssetRegistry.bin read/write
-- `uasset_rename.py` — cooked name-map rename + TotalHeaderSize / bulk offset fixups
-- `make_placeholder.py` — generates the mod folder icon. The shipped file is `assets/Icon128.png`; `generate_slot` copies it into each generated mod
+| File | Role |
+|---|---|
+| `generate_slot.py` / `.exe` | Rename templates → `out/CPS_<Id>/` |
+| `bake_portrait.py` / `.exe` | Bake `Resources/portrait.*` into the slot pak |
+| `merge_slots.py` / `.exe` | MergeInbox → pack + `PackCatalog.html` |
+| `registry_writer.py` | AssetRegistry.bin read/write |
+| `uasset_rename.py` | Cooked name-map rename + size fixups |
+| `make_placeholder.py` | Builds `assets/Icon128.png` (not in release zip) |
+| `freeze_exes.ps1` | Rebuild the three PyInstaller exes |
+| `stage_release.ps1` | Stage `dist/CustomPortraitSlots/` for Nexus zip |
