@@ -8,7 +8,7 @@ This is **not** CustomPortraitKit (vanilla texture replace) and **not** an updat
 
 ## Status
 
-Scaffold only. Generate / bake / merge tools are not implemented yet.
+`generate_slot` / `bake_portrait` / `merge_slots` are available. Freeze / Nexus packaging still pending.
 
 ## Requirements
 
@@ -37,7 +37,7 @@ MechWarrior 5: Mercenaries 向けに、**新しいポートレートスロット
 
 ## 状態
 
-骨格のみ。generate / bake / merge は未実装です。
+`generate_slot` / `bake_portrait` / `merge_slots` は利用可能。freeze / Nexus 梱包は未着手。
 
 ## 必要なもの
 

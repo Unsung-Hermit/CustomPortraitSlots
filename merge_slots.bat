@@ -1,7 +1,24 @@
 @echo off
 setlocal
 cd /d "%~dp0"
-echo CustomPortraitSlots: merge_slots is not implemented yet.
-echo Put baked CPS_* mods under MergeInbox\^<PackName^>\ then run this bat (no args).
+set "RC=1"
+
+if exist "Tools\merge_slots.exe" (
+  "Tools\merge_slots.exe"
+  set "RC=%ERRORLEVEL%"
+  goto end
+)
+
+if exist "Tools\merge_slots.py" (
+  python "Tools\merge_slots.py"
+  set "RC=%ERRORLEVEL%"
+  goto end
+)
+
+echo ERROR: Tools\merge_slots.exe / merge_slots.py not found.
+set "RC=1"
+
+:end
+echo.
 pause
-exit /b 1
+exit /b %RC%
