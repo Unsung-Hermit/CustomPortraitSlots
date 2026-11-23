@@ -13,4 +13,4 @@ Templates go under `templates/` (Male / Female / Nonbinary). Each set holds `CPS
 | `uasset_rename.py` | Cooked name-map rename + size fixups |
 | `make_placeholder.py` | Builds `assets/Icon128.png` (not in release zip) |
 | `freeze_exes.ps1` | Rebuild the three PyInstaller exes |
-| `stage_release.ps1` | Stage `dist/CustomPortraitSlots/` for Nexus zip |
+| `stage_release.ps1` | Stage `dist/CustomPortraitSlots/` (tracked; Nexus ZIP = that tree) |

@@ -1,0 +1,129 @@
+{
+  "layout": {
+    "name": "CPS_DXT5_512",
+    "width": 512,
+    "height": 512,
+    "pixelFormat": "PF_DXT5",
+    "uexpSize": 262427,
+    "uexpMagic": "08000000",
+    "dxtOffset": 255,
+    "dxtSize": 262144,
+    "mipFooterSize": 24,
+    "bulkHeaderOffset": 235,
+    "bulkOffsetFormula": "len(uasset) + dxtOffset"
+  },
+  "sourcePackage": "Mod Editor per-sex template mods CPSTemplate_Female / CPSTemplate_Male / CPSTemplate_Nonbinary (Editor 1.15.73 / game 1.15.399 cook)",
+  "sets": {
+    "Female": {
+      "texture": "CPST_Tex",
+      "portrait": "CPST_Portrait_Female",
+      "persona": "CPST_Persona_Female",
+      "personaSexTag": "Persona.Sex.Female",
+      "dir": "Female",
+      "files": {
+        "CPST_Persona_Female.uasset": {
+          "bytes": 1240,
+          "sha256": "60614e77574b5dcebafad49f2610bcc5fb2da64b1228265f813b68079e62197f"
+        },
+        "CPST_Persona_Female.uexp": {
+          "bytes": 683,
+          "sha256": "a4cf6cd92414c10610cf4623a2dcab9ce37a05af7dbb30006f54016d3a90a007"
+        },
+        "CPST_Portrait_Female.uasset": {
+          "bytes": 1018,
+          "sha256": "28e7dfa22854bbb021a2adf73d1c3c1d53e031e4e9cb4d62cebbe4ca555f0d2f"
+        },
+        "CPST_Portrait_Female.uexp": {
+          "bytes": 114,
+          "sha256": "e3527795cacc121a8e03ac30ad6b1b73c14826c632a3c71f0df101e0f4674895"
+        },
+        "CPST_Tex.uasset": {
+          "bytes": 803,
+          "sha256": "bc7e05895b6d020deb16e9b75f956deda9c0234450e48171b7eb36b9641fe55e"
+        },
+        "CPST_Tex.uexp": {
+          "bytes": 262427,
+          "sha256": "c216c31c33d72f366a08e7eaaecfb039cddf7225a57fa69c9bcf8dc5a87c01c1"
+        },
+        "AssetRegistry.json": {
+          "bytes": 4320,
+          "sha256": "806c2eba4484630ac89a30dbbbbc64f11233053a308a0c46aae465abf78c19ae"
+        }
+      }
+    },
+    "Male": {
+      "texture": "CPST_Tex",
+      "portrait": "CPST_Portrait_Male",
+      "persona": "CPST_Persona_Male",
+      "personaSexTag": "Persona.Sex.Male",
+      "dir": "Male",
+      "files": {
+        "CPST_Persona_Male.uasset": {
+          "bytes": 1230,
+          "sha256": "e3c1ae8a842f1aa429828080b9b86eaa2745f395130f42b38a6dafc7aa88f4d2"
+        },
+        "CPST_Persona_Male.uexp": {
+          "bytes": 677,
+          "sha256": "4cccbb9e56390317da9b29d287f9c41ab2b08199ab9a8861189f9f58052a0ff6"
+        },
+        "CPST_Portrait_Male.uasset": {
+          "bytes": 1008,
+          "sha256": "d1e11e5232903115dc39dea3f2af914733cf69bf456e20f0bc02772248e74fd3"
+        },
+        "CPST_Portrait_Male.uexp": {
+          "bytes": 114,
+          "sha256": "e3527795cacc121a8e03ac30ad6b1b73c14826c632a3c71f0df101e0f4674895"
+        },
+        "CPST_Tex.uasset": {
+          "bytes": 801,
+          "sha256": "f2f7be31a0260bd94d295ccd1bd7f26e6ef9be484f11ed0989813d3b86a845b5"
+        },
+        "CPST_Tex.uexp": {
+          "bytes": 262427,
+          "sha256": "698d07a7adb5451e80a6e5cc18fa5f3eae22e54774e9350e4165d305f3df56c5"
+        },
+        "AssetRegistry.json": {
+          "bytes": 4250,
+          "sha256": "59be6e67a0836aced7095872987c1d98c65000a6b5cbb40571b73017cefac8ca"
+        }
+      }
+    },
+    "Nonbinary": {
+      "texture": "CPST_Tex",
+      "portrait": "CPST_Portrait_Nonbinary",
+      "persona": "CPST_Persona_Nonbinary",
+      "personaSexTag": "Persona.Sex.Nonbinary",
+      "dir": "Nonbinary",
+      "files": {
+        "CPST_Persona_Nonbinary.uasset": {
+          "bytes": 1255,
+          "sha256": "88fc5ecb00127a925c8c3e387b4d3e229cf61000de20d4a512b04412c207ac64"
+        },
+        "CPST_Persona_Nonbinary.uexp": {
+          "bytes": 692,
+          "sha256": "cbfd543d5dfc46d71f73ef514b4336d03db28c3de7d6fc66a362c698f6b6db36"
+        },
+        "CPST_Portrait_Nonbinary.uasset": {
+          "bytes": 1033,
+          "sha256": "93469ebe49d6120602ee625fcf04ce5ccb6b55b214fd54b5e661945175498f9a"
+        },
+        "CPST_Portrait_Nonbinary.uexp": {
+          "bytes": 114,
+          "sha256": "e3527795cacc121a8e03ac30ad6b1b73c14826c632a3c71f0df101e0f4674895"
+        },
+        "CPST_Tex.uasset": {
+          "bytes": 806,
+          "sha256": "226203cffb08c8d16ed9ea8ae6f1456da23b3eaa862c4c00a63ca410fc58ed75"
+        },
+        "CPST_Tex.uexp": {
+          "bytes": 262427,
+          "sha256": "221d6e4b224e03fb0dabb0fa498031a9dcfd63005b44adfd770a40c166027323"
+        },
+        "AssetRegistry.json": {
+          "bytes": 4425,
+          "sha256": "13d663de4798e2c8fa97337532838e5e633800d437212649614d7d42067795e7"
+        }
+      }
+    }
+  }
+}

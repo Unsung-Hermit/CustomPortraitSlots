@@ -19,9 +19,12 @@
 !MergeInbox/
 !MergeInbox/README.md
 
+# --- dist: staged Nexus tree (tracked for quarantine parity with ZIP) ---
+!dist/
+!dist/**
+
 # --- Hard deny (even under allowed trees) ---
 out/
-dist/
 **/__pycache__/
 **/*.py[cod]
 **/*.pyo

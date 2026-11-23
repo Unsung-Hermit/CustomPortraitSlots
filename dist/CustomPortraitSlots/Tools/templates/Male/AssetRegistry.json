@@ -1,0 +1,162 @@
+{
+  "Header": "555/cTpJsOkykbOIB4E4Gw==",
+  "Unknown": 7,
+  "fAssetDatas": [
+    {
+      "ObjectPath": "/CPSTemplate_Male/CPST_Persona_Male.CPST_Persona_Male",
+      "PackagePath": "/CPSTemplate_Male",
+      "AssetClass": "MWPersonaAsset",
+      "PackageName": "/CPSTemplate_Male/CPST_Persona_Male",
+      "AssetName": "CPST_Persona_Male",
+      "TagAndValue": [
+        {
+          "Item1": "PrimaryAssetType",
+          "Item2": "MWPersonaAsset"
+        },
+        {
+          "Item1": "PrimaryAssetName",
+          "Item2": "CPST_Persona_Male"
+        },
+        {
+          "Item1": "AssetBundleData",
+          "Item2": "(Bundles=)"
+        },
+        {
+          "Item1": "NativeClass",
+          "Item2": "Class'/Script/MechWarrior.MWPersonaAsset'"
+        }
+      ],
+      "ChunkIDs": [
+        0
+      ],
+      "PackageTags": 262144
+    },
+    {
+      "ObjectPath": "/CPSTemplate_Male/CPST_Portrait_Male.CPST_Portrait_Male",
+      "PackagePath": "/CPSTemplate_Male",
+      "AssetClass": "MWPortraitAsset",
+      "PackageName": "/CPSTemplate_Male/CPST_Portrait_Male",
+      "AssetName": "CPST_Portrait_Male",
+      "TagAndValue": [
+        {
+          "Item1": "PrimaryAssetType",
+          "Item2": "MWPortraitAsset"
+        },
+        {
+          "Item1": "PrimaryAssetName",
+          "Item2": "CPST_Portrait_Male"
+        },
+        {
+          "Item1": "AssetBundleData",
+          "Item2": "(Bundles=)"
+        },
+        {
+          "Item1": "NativeClass",
+          "Item2": "Class'/Script/MechWarrior.MWPortraitAsset'"
+        }
+      ],
+      "ChunkIDs": [
+        0
+      ],
+      "PackageTags": 0
+    },
+    {
+      "ObjectPath": "/CPSTemplate_Male/UI/Textures/Pilots/CPST_Tex.CPST_Tex",
+      "PackagePath": "/CPSTemplate_Male/UI/Textures/Pilots",
+      "AssetClass": "Texture2D",
+      "PackageName": "/CPSTemplate_Male/UI/Textures/Pilots/CPST_Tex",
+      "AssetName": "CPST_Tex",
+      "TagAndValue": [
+        {
+          "Item1": "Format",
+          "Item2": "unknown"
+        },
+        {
+          "Item1": "SRGB",
+          "Item2": "True"
+        },
+        {
+          "Item1": "CompressionSettings",
+          "Item2": "TC_Default"
+        },
+        {
+          "Item1": "MipLoadOptions",
+          "Item2": "Default"
+        },
+        {
+          "Item1": "LODBias",
+          "Item2": "0"
+        },
+        {
+          "Item1": "Filter",
+          "Item2": "TF_Default"
+        },
+        {
+          "Item1": "Dimensions",
+          "Item2": "512x512"
+        },
+        {
+          "Item1": "NeverStream",
+          "Item2": "False"
+        },
+        {
+          "Item1": "VirtualTextureStreaming",
+          "Item2": "False"
+        },
+        {
+          "Item1": "LODGroup",
+          "Item2": "TEXTUREGROUP_UI"
+        },
+        {
+          "Item1": "AddressY",
+          "Item2": "TA_Wrap"
+        },
+        {
+          "Item1": "AddressX",
+          "Item2": "TA_Wrap"
+        },
+        {
+          "Item1": "HasAlphaChannel",
+          "Item2": "True"
+        }
+      ],
+      "ChunkIDs": [
+        0
+      ],
+      "PackageTags": 0
+    }
+  ],
+  "keyValuePairs": {
+    "/CPSTemplate_Male/CPST_Persona_Male.CPST_Persona_Male": 0,
+    "/CPSTemplate_Male": 1,
+    "MWPersonaAsset": 2,
+    "/CPSTemplate_Male/CPST_Persona_Male": 3,
+    "CPST_Persona_Male": 4,
+    "PrimaryAssetType": 5,
+    "PrimaryAssetName": 6,
+    "AssetBundleData": 7,
+    "NativeClass": 8,
+    "/CPSTemplate_Male/CPST_Portrait_Male.CPST_Portrait_Male": 9,
+    "MWPortraitAsset": 10,
+    "/CPSTemplate_Male/CPST_Portrait_Male": 11,
+    "CPST_Portrait_Male": 12,
+    "/CPSTemplate_Male/UI/Textures/Pilots/CPST_Tex.CPST_Tex": 13,
+    "/CPSTemplate_Male/UI/Textures/Pilots": 14,
+    "Texture2D": 15,
+    "/CPSTemplate_Male/UI/Textures/Pilots/CPST_Tex": 16,
+    "CPST_Tex": 17,
+    "Format": 18,
+    "SRGB": 19,
+    "CompressionSettings": 20,
+    "MipLoadOptions": 21,
+    "LODBias": 22,
+    "Filter": 23,
+    "Dimensions": 24,
+    "NeverStream": 25,
+    "VirtualTextureStreaming": 26,
+    "LODGroup": 27,
+    "AddressY": 28,
+    "AddressX": 29,
+    "HasAlphaChannel": 30
+  }
+}
