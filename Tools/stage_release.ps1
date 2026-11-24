@@ -76,4 +76,5 @@ Get-ChildItem -LiteralPath $Stage -Recurse -File |
 Write-Host ""
 Write-Host "Zip this folder for Nexus: $Stage"
 Write-Host "(Tracked in git for quarantine parity; *.zip stays gitignored.)"
-Write-Host "(Example) Compress-Archive -Path `"$Stage\*`" -DestinationPath (Join-Path $DistRoot 'CustomPortraitSlots.zip')"
+Write-Host "(Example) Compress-Archive -Path `"$Stage`" -DestinationPath (Join-Path $DistRoot 'CustomPortraitSlots.zip')"
+Write-Host "(ZIP top-level folder: CustomPortraitSlots\ — same layout as CustomPortraitKit.zip)"

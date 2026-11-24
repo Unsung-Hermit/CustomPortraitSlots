@@ -11,7 +11,7 @@ Tools\freeze_exes.ps1
 Tools\stage_release.ps1
 ```
 
-`stage_release.ps1` writes `dist\CustomPortraitSlots\` (no root README, no freeze/tests/placeholder). **That tree is tracked in git** so Nexus quarantine reviewers can match the uploaded ZIP to GitHub. Zip the folder contents for Nexus; keep `*.zip` out of the repo.
+`stage_release.ps1` writes `dist\CustomPortraitSlots\` (no root README, no freeze/tests/placeholder). **That tree is tracked in git** so Nexus quarantine reviewers can match the uploaded ZIP to GitHub. Zip that folder itself for Nexus (`CustomPortraitSlots\` at the ZIP root, same as CustomPortraitKit); keep `*.zip` out of the repo.
 
 ## Layout
 
@@ -106,6 +106,6 @@ Archive-level SHA-256 and VirusTotal links are provided in the Nexus support ema
 
 **本ガイドは `Guide.html`。** Nexus ZIP にルート README は入れない。`MergeInbox\README.md` はそのフォルダ向けの短い配置説明のみ。
 
-この README は GitHub / メンテナ用です。`Tools\stage_release.ps1` が `dist\CustomPortraitSlots\` を組み立てます（ルート README・freeze・test・placeholder は含めない）。**そのツリーはリポジトリで追跡**し、検疫担当が配布 ZIP と GitHub の整合を確認できるようにします。`*.zip` 自体は ignore のままです。
+この README は GitHub / メンテナ用です。`Tools\stage_release.ps1` が `dist\CustomPortraitSlots\` を組み立てます（ルート README・freeze・test・placeholder は含めない）。**そのツリーはリポジトリで追跡**し、検疫担当が配布 ZIP と GitHub の整合を確認できるようにします。Nexus 用 ZIP はフォルダごと固める（ZIP 内トップが `CustomPortraitSlots\`。Kit と同じ）。`*.zip` 自体は ignore のままです。
 
 Nexus 検疫向けの詳細（中身一覧・各ツール・ネットワーク・ビルド）は上の **For Nexus / quarantine reviewers** にあります。サポート依頼メールは短くし、ソースとビルド手順は本リポジトリを指します。
